@@ -52,6 +52,9 @@ apt-get -y install git gitk git-gui gitmagic git-sh git-svn gitweb
 # Settings manager for the compiz windows manager
 apt-get -y install compizconfig-settings-manager
 
+# package manager
+apt-get -y install synaptic
+
 ######################################################
 # install all non-aptitude packages
 ######################################################
