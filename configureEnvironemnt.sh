@@ -1,9 +1,9 @@
-######################################################
+ ######################################################
 # update the repository source list for aptitutude
 ######################################################
 
 # change the user to superuser for privileges
-
+su
 # NeuroDebian
 wget -O- http://neuro.debian.net/lists/precise.us-ca | sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
 apt-key adv --recv-keys --keyserver pgp.mit.edu 2649A5A9
@@ -78,8 +78,8 @@ dpkg -i ./mendeleydesktop-latest
 #NX
 
 #NX Client
-wget http://64.34.173.142/download/3.5.0/Linux/nxclient_3.5.0-7_amd64.deb
-dpkg -i nxclient_*amd64.deb 
+#wget http://64.34.173.142/download/3.5.0/Linux/nxclient_3.5.0-7_amd64.deb
+#dpkg -i nxclient_*amd64.deb 
 
 #Skype
 
@@ -100,7 +100,7 @@ su sam
 ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 ssh-copy-id "sam@bishoplab.psych.berkeley.edu -p 777"
 ssh-copy-id "rashared@bishoplab.psych.berkeley.edu -p 777"
-ssh-copy-id sam@ssh.neuro.berkeley.edu
+ssh-copy-id samyag1@ssh.neuro.berkeley.edu
 
 # set Meld as defauly diff viewer (in emacs) (?)
 
@@ -136,26 +136,38 @@ mkdir ~/NX
 
 # download and install ropemacs, ropemode, pymacs and autocomplete.el
 # to allow for an integrated python IDE in emacs
-wget http://pypi.python.org/packages/source/r/ropemacs/ropemacs-0.7.tar.gz ~/Downloads/.
-tar -xzf ~/Downloads/ropemacs-0.7.tar.gz ~/Downloads/ropemacs
-python ~/Downloads/ropemacs/setup.py install
-rm -r ~/Downloads/ropemacs*
-wget http://pypi.python.org/packages/source/r/ropemode/ropemode-0.2.tar.gz  ~/Downloads/.
-tar -xzf ~/Downloads/ropemode-0.2.tar.gz ~/Downloads/ropemode
-python ~/Downloads/ropemode/setup.py install
-rm -r ~/Downloads/ropemode*
-wget http://pypi.python.org/packages/source/r/rope/rope-0.9.4.tar.gz  ~/Downloads/.
-tar -xzf ~/Downloads/rope-0.9.4.tar.gz ~/Downloads/rope
-python ~/Downloads/rope/setup.py install
-rm -r ~/Downloads/rope*
-wget https://github.com/pinard/Pymacs/tarball/master ~/Downloads/.
-tar -xzf ~/Downloads/pymacs* ~/Downloads/pymacs
-python ~/Downloads/pymacs/setup.py install
-rm -r ~/Downloads/pymacs*
-wget http://cx4a.org/pub/auto-complete/auto-complete-1.3.1.tar.bz2 ~/Downloads/.
-tar -xjf ~/Downloads/auto-complete-1.3.1.tar.bz2 ~/Downloads/auto-complete
-python ~/Downloads/auto-complete/setup.py install
-rm -r ~/Downloads/auto-complete*
+cd ~/Downloads
+wget http://pypi.python.org/packages/source/r/ropemacs/ropemacs-0.7.tar.gz
+tar -xzf ropemacs-0.7.tar.gz 
+cd ropemacs-0.7
+sudo python setup.py install
+cd ..
+sudo rm -rf ropemacs*
+wget http://pypi.python.org/packages/source/r/ropemode/ropemode-0.2.tar.gz
+tar -xzf ropemode-0.2.tar.gz
+cd ropemode-0.2
+sudo python setup.py install
+cd ..
+sudo rm -rf ropemode*
+wget http://pypi.python.org/packages/source/r/rope/rope-0.9.4.tar.gz
+tar -xzf rope-0.9.4.tar.gz
+cd rope-0.9.4
+sudo python setup.py install
+cd ..
+sudo rm -rf rope*
+wget https://github.com/pinard/Pymacs/tarball/master
+tar -xzf master
+cd pinard-Pymacs*
+sudo python setup.py install
+cd ..
+sudo rm -rf pymacs*
+wget http://cx4a.org/pub/auto-complete/auto-complete-1.3.1.tar.bz2
+tar -xjf auto-complete-1.3.1.tar.bz2
+cd auto-complete-1.3.1
+sudo make
+sudo make install 
+cd ..
+sudo rm -rf auto-complete*
 
 # update my python settings
 
